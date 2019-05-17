@@ -21,6 +21,9 @@ function executeScript {
 	iex ((new-object net.webclient).DownloadString("$helperUri/$script"))
 }
 
+# Set the window to be maximized so that it is not half off the screen in a VM with a small defualt screen size!
+executeScript "SetWindowStyle.ps1";
+
 #--- Add VM Client tools if required ---
 executeScript "VirtualMachineTools.ps1";
 
