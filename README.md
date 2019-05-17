@@ -1,6 +1,6 @@
 
 # About this project
-The goal of this project is to provide a central place to share ideas for streamlining dev box setup and provide sample scripts for common dev scenarios. It's likely you will want to take the scripts here and modify them to fit your particular needs. When you make those changes if you think others would benefit please consider submitting a PR. Before you contribute please see the [Contribution Guidelines](CONTRIBUTING.md).
+This is fork of https://github.com/microsoft/windows-dev-box-setup-scripts, with script customised for my specific requirements.
 
 These scripts leverage two popular open source projects.
 - Boxstarter [boxstarter.org](http://boxstarter.org)
@@ -17,32 +17,29 @@ A recipe is the script you run.  It calls multiple helper scripts.  These curren
 
 **Helper Scripts**: A helper script performs setup routines that may be useful by many recipes. Recipes call helper scripts (you don't run helper scripts directly).  The helper scripts live in the **scripts** folder
 
-## You may want to customize the scripts
-These scripts should cover a lot of what you need but will not likely match your personal preferences exactly. In this case please fork the project and change the scripts however you desire. We really appreciate PR's back to this project if you have recommended changes.
-
-*Note: The one-click links use the following format.  When working out of a different Fork or Branch you'll want to update the links as follows:*
-
-`http://boxstarter.org/package/url?https://raw.githubusercontent.com/GITHUB_DOMAIN/windows-dev-box-setup-scripts/YOUR_BRANCH/RECIPE_NAME.ps1
-`
-
-For more info on testing your changes take a look at the [contribution guidelines](CONTRIBUTING.md).
-
 ## How to run the scripts
 Before you begin, please read the [Legal](#Legal) section.
 
 To run a recipe script, click a link in the table below from your target machine. This will download the Boxstarter one-click application, and prompt you for Boxstarter to run with Administrator privileges (which it needs to do its job). Clicking yes in this dialog will cause the recipe to begin. You can then leave the job unattended and come back when it's finished.
 
+# My Scripts
 |Click link to run  |Description  |
 |---------|---------|
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/master/dev_app.ps1'>Full Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, C++, UWP, .NET (WPF and Winforms)) |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/master/dev_app_desktop_uwp.ps1'>UWP Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, UWP) |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/master/dev_app_desktop_.NET.ps1'>.NET Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, .NET (WPF and Winforms)) |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/master/dev_app_desktop_cplusplus.ps1'>C++ Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, C++) |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/master/dev_web.ps1'>Web</a> | Web (VS Code, WSL, Multiple Browsers)        |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/master/dev_web_nodejs.ps1'>Web NodeJS</a>     | Web Dev with NodeJS (Web + NodeJS LTS)¹        |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/master/dev_ml_windows.ps1'>Machine Learning Windows</a>| Machine Learning with only Windows native tools        |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/master/dev_ml_wsl.ps1'>Machine Learning Linux</a>| Machine Learning with Linux tools running on WSL        |
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/master/devops_azure.ps1'>DevOps Azure</a>| Client setup for DevOps with Azure      |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/dev_data.ps1'>Data Developer</a>     | Data Developer Tools (Visual Studio with SSDT, SSMS) |
+
+
+# Microsoft Example Scripts
+|Click link to run  |Description  |
+|---------|---------|
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/dev_app.ps1'>Full Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, C++, UWP, .NET (WPF and Winforms)) |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/dev_app_desktop_uwp.ps1'>UWP Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, UWP) |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/dev_app_desktop_.NET.ps1'>.NET Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, .NET (WPF and Winforms)) |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/dev_app_desktop_cplusplus.ps1'>C++ Desktop App</a>     | Windows Desktop App Development (Visual Studio, Windows SDK, C++) |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/dev_web.ps1'>Web</a> | Web (VS Code, WSL, Multiple Browsers)        |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/dev_web_nodejs.ps1'>Web NodeJS</a>     | Web Dev with NodeJS (Web + NodeJS LTS)¹        |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/dev_ml_windows.ps1'>Machine Learning Windows</a>| Machine Learning with only Windows native tools        |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/dev_ml_wsl.ps1'>Machine Learning Linux</a>| Machine Learning with Linux tools running on WSL        |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database/devops_azure.ps1'>DevOps Azure</a>| Client setup for DevOps with Azure      |
 |     | Xamarin (Visual Studio, Xamarin, Android SDK) |
 |     | Containers (Docker, Kubernetes, etc...)        |
 |     | Submit a PR with a recommended configuration!        |
@@ -82,11 +79,11 @@ Windows 10 VM setup instructions
 Please read before using scripts.
 
 #### Using our scripts downloads third party software
-When you use our sample scripts, these will direct to Chocolately to install the packages.
+When you use our sample scripts, these will direct to Chocolatey to install the packages.
 By using Chocolatey to install a package, you are accepting the license for the application, executable(s), or other artifacts delivered to your machine as a result of a Chocolatey install. This acceptance occurs whether you know the license terms or not. Read and understand the license terms of any package you plan to install prior to installation through Chocolatey. If you do not want to accept the license of a package you are installing, you need to uninstall the package and any artifacts that end up on your machine as a result of the install.
 
 #### Our samples are provided AS-IS without any warranties of any kind
-Chocolately has implemented security safeguards in their process to help protect the community from malicious or pirated software, but any use of our scripts is at your own risk.  Please read the Chocolately's legal terms of use and the Boxstarter project license as well as how the community repository for Chocolatey.org is maintained.
+Chocolatey has implemented security safeguards in their process to help protect the community from malicious or pirated software, but any use of our scripts is at your own risk.  Please read the Chocolatey's legal terms of use and the Boxstarter project license as well as how the community repository for Chocolatey.org is maintained.
 
 Our project is subject to the MIT License and we make no warranties, express or implied of any kind.   In no event is Microsoft or contributing copyright holders be liable for any claim, damages or other liability arising from out of or in connection with the use of the project software or the use of other dealings in the project software.
 
