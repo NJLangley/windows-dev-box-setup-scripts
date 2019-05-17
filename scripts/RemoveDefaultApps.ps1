@@ -32,8 +32,10 @@ $applicationList = @(
 	"Microsoft.MicrosoftOfficeHub"
 	"Microsoft.OneConnect"
 	"Microsoft.WindowsPhone"
+	"Microsoft.Office.OneNote"
 	"Microsoft.WindowsSoundRecorder"
 	"*Solitaire*"
+	"Microsoft.People"
 	"Microsoft.MicrosoftStickyNotes"
 	"Microsoft.Office.Sway"
 	"Microsoft.XboxApp"
@@ -43,6 +45,9 @@ $applicationList = @(
 	"Microsoft.NetworkSpeedTest"
 	"Microsoft.FreshPaint"
 	"Microsoft.Print3D"
+	"Microsoft.Windows.Photos"
+	"microsoft.windowscommunicationsapps"
+	"Microsoft.SkypeApp"
 	"*Autodesk*"
 	"*BubbleWitch*"
     "king.com*"
@@ -58,6 +63,7 @@ $applicationList = @(
 	"ActiproSoftwareLLC.562882FEEB491" # Code Writer
 	"*.AdobePhotoshopExpress"
 );
+
 
 foreach ($app in $applicationList) {
     removeApp $app
