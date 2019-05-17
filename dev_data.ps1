@@ -40,6 +40,7 @@ executeScript "SqlServerOnDocker.ps1";
 
 #--- reenabling critial items ---
 executeScript "DatabaseTools.ps1";
+executeScript "NiallsConfiguration.ps1";
 Enable-UAC
 Enable-MicrosoftUpdate
 Install-WindowsUpdate -acceptEula
