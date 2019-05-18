@@ -1,13 +1,30 @@
 Update-SessionEnvironment
 
 # Carbon is a module to help in setting up machines, has some useful commandlets for setting reg keys etc
-Install-Module -Name Carbon;
-Install-Module -Name dbatools;
+Install-Module dbatools;
+Install-Module Carbon;
+Install-Module PPoShTools; # Has a useful CmdLet for adding fonts
 
+# Add my fav programming font's with ligatures so that they are in place ready for the settings for my code editors
+$fontsTempDirectory = "$Env:Temp\fonts"
+(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Bold.ttf") |
+    Out-File -Path "$fontsTempDirectory\FiraCode-Bold.ttf";
+(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Light.ttf") |
+    Out-File -Path "$fontsTempDirectory\FiraCode-Light.ttf";
+(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Medium.ttf") |
+    Out-File -Path "$fontsTempDirectory\FiraCode-Medium.ttf";
+(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Regular.ttf") |
+    Out-File -Path "$fontsTempDirectory\FiraCode-Regular.ttf";
+(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Retina.ttf") |
+    Out-File -Path "$fontsTempDirectory\FiraCode-Retina.ttf";
+Import-Module PPoShTools -NoClobber;
+Add-Font $fontsTempDirectory
 
+# I Like Chrome to be my default browser
 choco install -y SetDefaultBrowser;
 SetDefaultBrowser.exe chrome;
 
+# A few more useful apps
 choco install -y paint.net;
 choco install -y sourcetree;
 
@@ -53,5 +70,5 @@ $Process.Kill()
 choco install -y sqltoolbelt --params "/products:'SQL Prompt, SQL Search'" --force;
 
 # TODO: Add Visual Studio plugins, config file etc...
-
+choco install resharper-ultimate-all --params "'/NoCpp /NoTeamCityAddin'";
 
