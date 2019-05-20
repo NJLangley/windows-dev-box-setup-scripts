@@ -9,7 +9,11 @@ $computerModel = Get-WmiObject Win32_ComputerSystem | Select-Object -ExpandPrope
 # I could not get the workarounds to work manually, so I hav resorted to manually setting up the dcoker environment. This means the updates are not
 # automatic, but we use Chocolatey, so thats not too much of an issue...
 if ( $computerModel -notlike "VMWare*" ){
-    choco install -y docker-desktop
+    if ( ( choco list -localonly -exact docker-desktop | Select-Object -Last 1 ) -eq "0 packages installed."  ) {
+        choco install -y docker-desktop;
+        Invoke-Reboot;
+    }
+
 } else {
     # These are the key parts of docker on windows
     choco install -y docker-cli;
