@@ -9,11 +9,12 @@ $computerModel = Get-WmiObject Win32_ComputerSystem | Select-Object -ExpandPrope
 # I could not get the workarounds to work manually, so I hav resorted to manually setting up the dcoker environment. This means the updates are not
 # automatic, but we use Chocolatey, so thats not too much of an issue...
 if ( $computerModel -notlike "VMWare*" ){
+    Write-Host "Not running on VMWare, checking if docker desktop is installed..."
     if ( ( choco list -localonly -exact docker-desktop | Select-Object -Last 1 ) -eq "0 packages installed."  ) {
+        Write-Host "Installing docker desktop..."
         choco install -y docker-desktop;
         Invoke-Reboot;
     }
-
 } else {
     # These are the key parts of docker on windows
     choco install -y docker-cli;
@@ -43,9 +44,9 @@ if ( $computerModel -notlike "VMWare*" ){
         Get-ChildItem -Path env: | Where-Object -Property Name -Like docker* | ForEach-Object { [System.Environment]::SetEnvironmentVariable($_.Name, $_.Value, [System.EnvironmentVariableTarget]::User) }
 
         # Finally add the docker IP to the hosts file as docker.local
-        $IPsql2017 = docker-machine ip docker-vm;
+        $IPsql2017 = docker-machine ip $dockerVMName;
         $hostsEntry = "$IPsql2017`t`tdocker.local"
-        if ( $null -eq (Get-Content C:\Windows\System32\drivers\etc\hosts).Split("`n") | Where-Object { $_ -eq $hostsEntry } ){
+        if ( $null -ne (Get-Content C:\Windows\System32\drivers\etc\hosts).Split("`n") | Where-Object { $_ -eq $hostsEntry } ){
             $hostsEntry | Out-File -Append -Encoding utf8 -FilePath C:\Windows\System32\drivers\etc\hosts
         }
     }
