@@ -43,9 +43,9 @@ if ( $computerModel -notlike "VMWare*" ){
         Get-ChildItem -Path env: | Where-Object -Property Name -Like docker* | ForEach-Object { [System.Environment]::SetEnvironmentVariable($_.Name, $_.Value, [System.EnvironmentVariableTarget]::User) }
 
         # Finally add the docker IP to the hosts file as docker.local
-        $IPsql2017 = docker-machine ip docker-vm;
+        $IPsql2017 = docker-machine ip $dockerVMName;
         $hostsEntry = "$IPsql2017`t`tdocker.local"
-        if ( $null -eq (Get-Content C:\Windows\System32\drivers\etc\hosts).Split("`n") | Where-Object { $_ -eq $hostsEntry } ){
+        if ( $null -ne (Get-Content C:\Windows\System32\drivers\etc\hosts).Split("`n") | Where-Object { $_ -eq $hostsEntry } ){
             $hostsEntry | Out-File -Append -Encoding utf8 -FilePath C:\Windows\System32\drivers\etc\hosts
         }
     }
