@@ -2,7 +2,6 @@ Update-SessionEnvironment
 
 # Carbon is a module to help in setting up machines, has some useful commandlets for setting reg keys etc
 Install-Module dbatools;
-Install-Module Carbon;
 Install-Module PPoShTools; # Has a useful CmdLet for adding fonts
 
 # Add my fav programming font's with ligatures so that they are in place ready for the settings for my code editors
@@ -23,10 +22,6 @@ Add-Font $fontsTempDirectory
 # I Like Chrome to be my default browser
 choco install -y SetDefaultBrowser;
 SetDefaultBrowser.exe chrome;
-
-# A few more useful apps
-choco install -y paint.net;
-choco install -y sourcetree;
 
 # Install the poshgit PowerShell module, and add my profile for all hosts. We want version 1 whcih is still pre-release...
 $currentUserProfile = [System.IO.Path]::Combine([Environment]::GetFolderPath("MyDocuments"), "WindowsPowerShell", "profile.ps1");
@@ -67,8 +62,4 @@ $Process = Start-Process -FilePath $ssmsExe -ArgumentList $Args -Passthru
 Start-Sleep -Seconds $SecondsToSleep #hack: Couldn't find a way to exit when done
 $Process.Kill()
 
-choco install -y sqltoolbelt --params "/products:'SQL Prompt, SQL Search'" --force;
-
-# TODO: Add Visual Studio plugins, config file etc...
-choco install resharper-ultimate-all --params "'/NoCpp /NoTeamCityAddin'";
 
