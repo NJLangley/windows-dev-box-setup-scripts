@@ -66,5 +66,5 @@ $Process.Kill()
 choco install -y sqltoolbelt --params "/products:'SQL Prompt, SQL Search'" --force;
 
 # TODO: Add Visual Studio plugins, config file etc...
-choco install resharper-ultimate-all --params "'/NoCpp /NoTeamCityAddin'";
+choco install -y resharper-ultimate-all --params "'/NoCpp /NoTeamCityAddin'";
 
