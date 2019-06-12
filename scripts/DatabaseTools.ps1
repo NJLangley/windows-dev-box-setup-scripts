@@ -5,14 +5,14 @@ if ( ( choco list -localonly -exact dotnetfx | Select-Object -Last 1 ) -eq "0 pa
 }
 
 # visualstudio2017community recomends rebooting before and after install
-if ( ( choco list -localonly -exact visualstudio2017community | Select-Object -Last 1 ) -eq "0 packages installed." ){
-    choco install -y visualstudio2017community;
+if ( ( choco list -localonly -exact visualstudio2019community | Select-Object -Last 1 ) -eq "0 packages installed." ){
+    choco install -y visualstudio2019community;
     Invoke-Reboot;
 }
 
-#choco install -y visualstudio2017-workload-data;
-#choco install -y visualstudio2017-workload-azure;
-#choco install -y visualstudio2017-workload-manageddesktop;
+choco install -y visualstudio2019-workload-data;
+choco install -y visualstudio2019-workload-azure;
+choco install -y visualstudio2019-workload-manageddesktop;
 
 choco install -y sql-server-management-studio;
 Update-SessionEnvironment;
