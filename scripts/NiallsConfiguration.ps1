@@ -7,18 +7,14 @@ Install-Module PPoShTools; # Has a useful CmdLet for adding fonts
 
 # Add my fav programming font's with ligatures so that they are in place ready for the settings for my code editors
 $fontsTempDirectory = "$Env:Temp\fonts"
-(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Bold.ttf") |
-    Out-File -Path "$fontsTempDirectory\FiraCode-Bold.ttf";
-(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Light.ttf") |
-    Out-File -Path "$fontsTempDirectory\FiraCode-Light.ttf";
-(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Medium.ttf") |
-    Out-File -Path "$fontsTempDirectory\FiraCode-Medium.ttf";
-(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Regular.ttf") |
-    Out-File -Path "$fontsTempDirectory\FiraCode-Regular.ttf";
-(new-object net.webclient).DownloadString("https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Retina.ttf") |
-    Out-File -Path "$fontsTempDirectory\FiraCode-Retina.ttf";
+if ( -Not (Test-Path $fontsTempDirectory) ) { New-Item -Path $fontsTempDirectory -Type Directory -Force | Out-Null };
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Bold.ttf" -OutFile "$fontsTempDirectory\FiraCode-Bold.ttf";
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Light.ttf" -OutFile "$fontsTempDirectory\FiraCode-Light.ttf";
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Medium.ttf" -OutFile "$fontsTempDirectory\FiraCode-Medium.ttf";
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Regular.ttf" -OutFile "$fontsTempDirectory\FiraCode-Regular.ttf";
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Retina.ttf" -OutFile "$fontsTempDirectory\FiraCode-Retina.ttf";
 Import-Module PPoShTools -NoClobber;
-Add-Font $fontsTempDirectory
+Add-Font -Path $fontsTempDirectory
 
 # I Like Chrome to be my default browser
 choco install -y SetDefaultBrowser;
