@@ -25,7 +25,7 @@ To run a recipe script, click a link in the table below from your target machine
 # My Scripts
 |Click link to run  |Description  |
 |---------|---------|
-|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database-testing/dev_data.ps1'>Data Developer</a>     | Data Developer Tools (Visual Studio with SSDT, SSMS, SQL Server on Docker) |
+|<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database-testing/dev_data.ps1'>Data Developer (inc. SQL Server on Docker)</a>     | Data Developer Tools (Visual Studio with SSDT, SSMS, SQL Server on Docker) |
 |<a href='http://boxstarter.org/package/url?https://raw.githubusercontent.com/NJLangley/windows-dev-box-setup-scripts/dev-database-testing/dev_data_no_docker_sql.ps1'>Data Developer</a>     | Data Developer Tools (Visual Studio with SSDT, SSMS) |
 
 # Microsoft Example Scripts
