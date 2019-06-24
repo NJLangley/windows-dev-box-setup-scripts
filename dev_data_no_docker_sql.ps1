@@ -24,6 +24,8 @@ function executeScript {
 # Call the common config script to set common variables for all scripts
 executeScript "CommonBoxstarterConfig.ps1";
 
+Write-Host "Chocolatey log folder set to $ChocoCacheLocation" -ForegroundColor Green;
+
 # Set the window to be maximized so that it is not half off the screen in a VM with a small defualt screen size!
 executeScript "SetWindowStyle.ps1";
 
