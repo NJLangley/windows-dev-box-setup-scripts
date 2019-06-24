@@ -6,15 +6,7 @@ Install-Module Carbon --cacheLocation $ChocoCacheLocation;
 Install-Module PPoShTools --cacheLocation $ChocoCacheLocation; # Has a useful CmdLet for adding fonts
 
 # Add my fav programming font's with ligatures so that they are in place ready for the settings for my code editors
-$fontsTempDirectory = "$Env:Temp\fonts"
-if ( -Not (Test-Path $fontsTempDirectory) ) { New-Item -Path $fontsTempDirectory -Type Directory -Force | Out-Null };
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Bold.ttf" -OutFile "$fontsTempDirectory\FiraCode-Bold.ttf";
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Light.ttf" -OutFile "$fontsTempDirectory\FiraCode-Light.ttf";
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Medium.ttf" -OutFile "$fontsTempDirectory\FiraCode-Medium.ttf";
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Regular.ttf" -OutFile "$fontsTempDirectory\FiraCode-Regular.ttf";
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Retina.ttf" -OutFile "$fontsTempDirectory\FiraCode-Retina.ttf";
-Import-Module PPoShTools -NoClobber;
-Add-Font -Path $fontsTempDirectory -Force;
+choco install -y firacode --cacheLocation $ChocoCacheLocation;
 
 # I Like Chrome to be my default browser
 choco install -y SetDefaultBrowser --cacheLocation $ChocoCacheLocation;
