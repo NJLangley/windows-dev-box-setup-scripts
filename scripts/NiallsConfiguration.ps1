@@ -1,20 +1,20 @@
 Update-SessionEnvironment
 
 # Carbon is a module to help in setting up machines, has some useful commandlets for setting reg keys etc
-Install-Module dbatools --cacheLocation $ChocoCacheLocation;
-Install-Module Carbon --cacheLocation $ChocoCacheLocation;
-Install-Module PPoShTools --cacheLocation $ChocoCacheLocation; # Has a useful CmdLet for adding fonts
+Install-Module dbatools --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
+Install-Module Carbon --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
+Install-Module PPoShTools --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\"; # Has a useful CmdLet for adding fonts
 
 # Add my fav programming font's with ligatures so that they are in place ready for the settings for my code editors
-choco install -y firacode --cacheLocation $ChocoCacheLocation;
+choco install -y firacode --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
 
 # I Like Chrome to be my default browser
-choco install -y SetDefaultBrowser --cacheLocation $ChocoCacheLocation;
+choco install -y SetDefaultBrowser --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
 SetDefaultBrowser.exe chrome;
 
 # A few more useful apps
-choco install -y paint.net --cacheLocation $ChocoCacheLocation;
-choco install -y sourcetree --cacheLocation $ChocoCacheLocation;
+choco install -y paint.net --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
+choco install -y sourcetree --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
 
 # Install the poshgit PowerShell module, and add my profile for all hosts. We want version 1 whcih is still pre-release...
 $currentUserProfile = [System.IO.Path]::Combine([Environment]::GetFolderPath("MyDocuments"), "WindowsPowerShell", "profile.ps1");
@@ -55,10 +55,10 @@ $Process = Start-Process -FilePath $ssmsExe -ArgumentList $Args -Passthru
 Start-Sleep -Seconds $SecondsToSleep #hack: Couldn't find a way to exit when done
 $Process.Kill()
 
-choco install -y sqltoolbelt --params "/products:'SQL Prompt, SQL Search'" --force --cacheLocation $ChocoCacheLocation;
+choco install -y sqltoolbelt --params "/products:'SQL Prompt, SQL Search'" --force --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
 
 # TODO: Add Visual Studio plugins, config file etc...
-choco install -y resharper-ultimate-all --params "'/NoCpp /NoTeamCityAddin'" --cacheLocation $ChocoCacheLocation;
+choco install -y resharper-ultimate-all --params "'/NoCpp /NoTeamCityAddin'" --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
 
 
 # Remove any desktop icons that have been added by software installs

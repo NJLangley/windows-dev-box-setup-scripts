@@ -1,5 +1,5 @@
 # Install python
-choco install -y python --version=3.5.4 --cacheLocation $ChocoCacheLocation;
+choco install -y python --version=3.5.4 --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
 
 # Refresh path
 refreshenv

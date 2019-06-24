@@ -12,14 +12,14 @@ if ( $computerModel -notlike "VMWare*" ){
     Write-Host "Not running on VMWare, checking if docker desktop is installed..."
     if ( ( choco list -localonly -exact docker-desktop | Select-Object -Last 1 ) -eq "0 packages installed."  ) {
         Write-Host "Installing docker desktop..."
-        choco install -y docker-desktop --cacheLocation $ChocoCacheLocation;
+        choco install -y docker-desktop --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
         Invoke-Reboot;
     }
 } else {
     # These are the key parts of docker on windows
-    choco install -y docker-cli --cacheLocation $ChocoCacheLocation;
-    choco install -y docker-machine --cacheLocation $ChocoCacheLocation;
-    choco install -y docker-compose --cacheLocation $ChocoCacheLocation;
+    choco install -y docker-cli --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
+    choco install -y docker-machine --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
+    choco install -y docker-compose --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
 
     # Add a HyperV switch so the Linux VM used for Linux Docker containers can talk to it's host, and pull images from the internet
     $hostNetAdapter = Get-NetAdapter -Physical | Select-Object -First 1 -ExpandProperty Name;
@@ -53,4 +53,4 @@ if ( $computerModel -notlike "VMWare*" ){
 }
 
 # Finally, install the docker plugin for VSCode
-choco install -y vscode-docker --cacheLocation $ChocoCacheLocation;
+choco install -y vscode-docker --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey\";
