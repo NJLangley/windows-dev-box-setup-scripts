@@ -1,5 +1,5 @@
 # Install python
-choco install -y python --version=3.5.4
+choco install -y python --version=3.5.4 --cacheLocation $ChocoCacheLocation;
 
 # Refresh path
 refreshenv

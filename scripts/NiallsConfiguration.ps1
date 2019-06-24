@@ -1,9 +1,9 @@
 Update-SessionEnvironment
 
 # Carbon is a module to help in setting up machines, has some useful commandlets for setting reg keys etc
-Install-Module dbatools;
-Install-Module Carbon;
-Install-Module PPoShTools; # Has a useful CmdLet for adding fonts
+Install-Module dbatools --cacheLocation $ChocoCacheLocation;
+Install-Module Carbon --cacheLocation $ChocoCacheLocation;
+Install-Module PPoShTools --cacheLocation $ChocoCacheLocation; # Has a useful CmdLet for adding fonts
 
 # Add my fav programming font's with ligatures so that they are in place ready for the settings for my code editors
 $fontsTempDirectory = "$Env:Temp\fonts"
@@ -14,15 +14,15 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Regular.ttf" -OutFile "$fontsTempDirectory\FiraCode-Regular.ttf";
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Retina.ttf" -OutFile "$fontsTempDirectory\FiraCode-Retina.ttf";
 Import-Module PPoShTools -NoClobber;
-Add-Font -Path $fontsTempDirectory
+Add-Font -Path $fontsTempDirectory -Force;
 
 # I Like Chrome to be my default browser
-choco install -y SetDefaultBrowser;
+choco install -y SetDefaultBrowser --cacheLocation $ChocoCacheLocation;
 SetDefaultBrowser.exe chrome;
 
 # A few more useful apps
-choco install -y paint.net;
-choco install -y sourcetree;
+choco install -y paint.net --cacheLocation $ChocoCacheLocation;
+choco install -y sourcetree --cacheLocation $ChocoCacheLocation;
 
 # Install the poshgit PowerShell module, and add my profile for all hosts. We want version 1 whcih is still pre-release...
 $currentUserProfile = [System.IO.Path]::Combine([Environment]::GetFolderPath("MyDocuments"), "WindowsPowerShell", "profile.ps1");
@@ -63,8 +63,17 @@ $Process = Start-Process -FilePath $ssmsExe -ArgumentList $Args -Passthru
 Start-Sleep -Seconds $SecondsToSleep #hack: Couldn't find a way to exit when done
 $Process.Kill()
 
-choco install -y sqltoolbelt --params "/products:'SQL Prompt, SQL Search'" --force;
+choco install -y sqltoolbelt --params "/products:'SQL Prompt, SQL Search'" --force --cacheLocation $ChocoCacheLocation;
 
 # TODO: Add Visual Studio plugins, config file etc...
-choco install -y resharper-ultimate-all --params "'/NoCpp /NoTeamCityAddin'";
+choco install -y resharper-ultimate-all --params "'/NoCpp /NoTeamCityAddin'" --cacheLocation $ChocoCacheLocation;
+
+
+# Remove any desktop icons that have been added by software installs
+Get-ChildItem $env:USERPROFILE\Desktop\*.lnk | ForEach-Object { Remove-Item -Path $_.FullName -Force }
+Get-ChildItem $env:PUBLIC\Desktop\*.lnk | ForEach-Object { Remove-Item -Path $_.FullName -Force }
+
+
+
+
 

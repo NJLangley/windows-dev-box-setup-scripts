@@ -15,6 +15,7 @@ function removeApp {
 	Get-AppXProvisionedPackage -Online | Where DisplayNam -like $appName | Remove-AppxProvisionedPackage -Online
 }
 
+
 $applicationList = @(
 	"Microsoft.BingFinance"
 	"Microsoft.3DBuilder"
@@ -62,9 +63,15 @@ $applicationList = @(
 	"*.EclipseManager"
 	"ActiproSoftwareLLC.562882FEEB491" # Code Writer
 	"*.AdobePhotoshopExpress"
+    "Microsoft.XboxSpeechToTextOverlay"
+    "Microsoft.XboxGameOverlay"
+    "Microsoft.Xbox.TCUI"
+
 );
 
 
+# TODO: Sometimes the apps don't unpin from the start menu as then uninstall, and then we can't do it programatically, so
+#		remove the pined tiles for each item and then uninstall it
 foreach ($app in $applicationList) {
     removeApp $app
 }

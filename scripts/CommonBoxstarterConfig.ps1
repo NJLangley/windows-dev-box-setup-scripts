@@ -1,0 +1,1 @@
+$ChocoCacheLocation = "$env:userprofile\AppData\Local\Temp\chocolatey";

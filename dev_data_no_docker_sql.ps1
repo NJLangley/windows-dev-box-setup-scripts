@@ -21,6 +21,9 @@ function executeScript {
 	iex ((new-object net.webclient).DownloadString("$helperUri/$script"))
 }
 
+# Call the common config script to set common variables for all scripts
+executeScript "CommonBoxstarterConfig.ps1";
+
 # Set the window to be maximized so that it is not half off the screen in a VM with a small defualt screen size!
 executeScript "SetWindowStyle.ps1";
 
