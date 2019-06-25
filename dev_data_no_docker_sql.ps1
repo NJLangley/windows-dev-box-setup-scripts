@@ -24,24 +24,24 @@ function executeScript {
 # Call the common config script to set common variables for all scripts
 executeScript "CommonBoxstarterConfig.ps1";
 
-Write-Host "Chocolatey log folder set to $ChocoCacheLocation" -ForegroundColor Green;
+#Write-Host "Chocolatey log folder set to $ChocoCacheLocation" -ForegroundColor Green;
 
 # Set the window to be maximized so that it is not half off the screen in a VM with a small defualt screen size!
-executeScript "SetWindowStyle.ps1";
+#executeScript "SetWindowStyle.ps1";
 
 #--- Add VM Client tools if required ---
-executeScript "VirtualMachineTools.ps1";
+#executeScript "VirtualMachineTools.ps1";
 
 #--- Setting up Windows ---
-executeScript "SystemConfiguration.ps1";
-executeScript "FileExplorerSettings.ps1";
+#executeScript "SystemConfiguration.ps1";
+#executeScript "FileExplorerSettings.ps1";
 executeScript "Browsers.ps1";
-executeScript "RemoveDefaultApps.ps1";
+#executeScript "RemoveDefaultApps.ps1";
 executeScript "CommonDevTools.ps1";
 
-executeScript "DatabaseTools.ps1";
-executeScript "NiallsConfiguration.ps1";
+#executeScript "DatabaseTools.ps1";
+#executeScript "NiallsConfiguration.ps1";
 
 #--- re-enabling critial items ---
-executeScript "WindowsUpdate.ps1";
+#executeScript "WindowsUpdate.ps1";
 Enable-UAC
