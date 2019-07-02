@@ -4,6 +4,9 @@
 . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; Get-Boxstarter -Force;
 Copy-Item -Path "\\vmware-host\Shared Folders\windows-dev-box-setup-scripts" -Filter "*" -Destination "C:\Boxstarter\windows-dev-box-setup-scripts" -Container -Recurse -Force;
 Install-BoxstarterPackage -PackageName "C:\Boxstarter\windows-dev-box-setup-scripts\dev_data_no_docker_sql.ps1";
+
+
+
 ```
 
 
